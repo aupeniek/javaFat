@@ -21,6 +21,9 @@ dependencies {
 
 test {
     systemProperties 'property': 'value'
+    useJUnit {
+        includeCategories 'src/test/java.async'
+    }
 }
 
 uploadArchives {
