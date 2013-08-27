@@ -21,8 +21,8 @@ dependencies {
 
 test {
     systemProperties 'property': 'value'
-    testSrcDirs = 'src/test/java/async'
-    scanForTestClasses = true
+    testSrcDirs: 'src/test/java/async'
+    scanForTestClasses: true
     useJUnit {
         includeCategories 'src/test/java/async'
     }
