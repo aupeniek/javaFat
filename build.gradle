@@ -1,37 +1,44 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
-sourceCompatibility = 1.5
-version = '1.0'
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
-    }
-}
-
 repositories {
     mavenCentral()
+    maven {
+    	url 'https://repository-saucelabs.forge.cloudbees.com/release'
+    }
 }
 
 dependencies {
-	testCompile 'com.codeborne:selenide:2.3'
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
     testCompile group: 'junit', name: 'junit', version: '4.+'
+    testCompile 'com.codeborne:selenide:2.5'
+    testCompile 'com.saucelabs:sauce_junit:1.0.13'
+    testCompile 'com.google.code.gson:gson:2.2.4'
+    testCompile 'org.apache.commons:commons-lang3:3.0'
 }
 
-test {
-    systemProperties 'property': 'value'
-    testSrcDirs: 'src/test/java/async'
-    scanForTestClasses: true
-    useJUnit {
-        includeCategories 'src/test/java/async'
-    }
+tasks.withType(Test) {
+	systemProperties = System.getProperties()
+    systemProperties loadConf()
+    def appEndpoint = (systemProperties['app'] ? systemProperties[systemProperties['app']] : systemProperties['endpoint'])
+    systemProperties['endpoint'] = appEndpoint
+	systemProperties['file.encoding'] = 'UTF-8'
+	reports.html.enabled false
+	reports.junitXml.destination = "$buildDir/test-results/" + systemProperties['browser']
 }
 
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
+task smokeTests(type: Test) {
+	include '**/SmokeTests.class'	
+}
+
+task allTests(type: Test) {
+	include '**/AllTests.class'	
+}
+
+def loadConf() {
+	file("build.properties").withReader { reader ->
+		def buildProps = new Properties()
+		buildProps.load(reader)
+		return buildProps
+	}
 }
