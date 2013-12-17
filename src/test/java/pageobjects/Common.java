@@ -24,14 +24,13 @@ public class Common {
 			.getProperty("globaltimeout", "15000"));
 
 	public static void login() {
-		$(byAttribute("type", "button")).click();
-		$(byAttribute("name", "username")).setValue(
+		
+		$("#loginUsernameBar").setValue(
 				System.getProperty("loginusr"));
 		$(byAttribute("name", "password")).setValue(
 				System.getProperty("loginpw"));
-		$("#login-submit").click();
-		$(byAttribute("data-ng-show", "runningcount")).waitUntil(visible,
-				BASE_TIMEOUT);
+		$("#loginFormButtonBar").click();
+		
 	}
 
 	public static void checkSubHeadingText(String headingText) {
