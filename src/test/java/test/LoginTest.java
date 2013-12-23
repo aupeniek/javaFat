@@ -46,6 +46,7 @@ public class LoginTest extends TestWrapper {
 	@Test
 	public void loginAndConfirm() {
 		$("#shieldButton").click();
+		
 		assert(driver.getTitle().indexOf("Realm") > 0);
 		
 		FlashButtons.confirmLogin();

@@ -28,6 +28,7 @@ public class Common {
 		$("#loginUsernameBar").setValue(System.getProperty("loginusr"));
 		SelenideElement pw = $("#loginFormBar").$$("fieldset").get(1).$("input");
 		pw.setValue(System.getProperty("loginpw"));
+		
 		$("#loginFormButtonBar").click();
 		
 	}
