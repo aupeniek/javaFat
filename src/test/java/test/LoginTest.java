@@ -45,7 +45,7 @@ public class LoginTest extends TestWrapper {
 
 	@Test
 	public void loginAndConfirm() {
-		$("#shieldButton").click();
+		$(".play partners jsInstance-preload").click();
 		
 		assert(driver.getTitle().indexOf("Realm") > 0);
 		
