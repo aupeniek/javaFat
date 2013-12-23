@@ -12,6 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.internal.seleniumemulation.WaitForCondition;
 
 import com.codeborne.selenide.Selenide;
 
@@ -45,14 +46,7 @@ public class LoginTest extends TestWrapper {
 	@Test
 	public void loginAndConfirm() {
 		$("#shieldButton").click();
-		
-		try {
-			driver.wait(10000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		assert(driver.getTitle().indexOf("") > 0);
+		assert(driver.getTitle().indexOf("Realm") > 0);
 		
 		FlashButtons.confirmLogin();
 		
