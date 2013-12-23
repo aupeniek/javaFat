@@ -33,11 +33,12 @@ public class LoginTest extends TestWrapper {
 
 	@BeforeClass
 	public static void openDashboard() {
+		open(baseUrl);
 		timeout = BASE_TIMEOUT;
 		baseUrl = BASE_URL;
-		Common.login();
 		driver.manage().window().setPosition(new Point(0, 0));
 		driver.manage().window().setSize(new Dimension(1280, 1024));
+		Common.login();
 	}
 
 	@AfterClass
