@@ -5,6 +5,9 @@ import static com.codeborne.selenide.Configuration.timeout;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
+import java.awt.Robot;
+import java.util.concurrent.TimeUnit;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -12,9 +15,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.internal.seleniumemulation.WaitForCondition;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 
 import pageobjects.Common;
 import pageobjects.FlashButtons;
@@ -28,7 +33,7 @@ public class LoginTest extends TestWrapper {
 		baseUrl = BASE_URL;
 		open(baseUrl);
 		driver.manage().window().setPosition(new Point(0, 0));
-		driver.manage().window().setSize(new Dimension(1280, 1024));
+		driver.manage().window().setSize(new Dimension(1200, 850));
 		Common.login();
 	}
 
@@ -44,13 +49,13 @@ public class LoginTest extends TestWrapper {
 	}
 
 	@Test
-	public void loginAndConfirm() {
-		$(".play partners jsInstance-preload").click();
-		
-		assert(driver.getTitle().indexOf("Realm") > 0);
-		
+	public void loginAndConfirm() throws Exception {
+		SelenideElement but = $("#shieldButtonOverlay");
+		but.click();
+		Thread.sleep(70000);
 		FlashButtons.confirmLogin();
 		
+		System.out.println("Title: " + driver.getTitle());
 	}
 	
 	public static void sleep(Long time) {
