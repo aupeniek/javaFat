@@ -26,7 +26,8 @@ import pageobjects.FlashButtons;
 import util.TestWrapper;
 
 public class LoginTest extends TestWrapper {
-
+	FlashButtons buttons = new FlashButtons(driver);
+	
 	@BeforeClass
 	public static void openDashboard() {
 		timeout = BASE_TIMEOUT;
@@ -53,7 +54,7 @@ public class LoginTest extends TestWrapper {
 		SelenideElement but = $("#shieldButtonOverlay");
 		but.click();
 		Thread.sleep(70000);
-		FlashButtons.confirmLogin();
+		buttons.confirmLogin();
 		
 		System.out.println("Title: " + driver.getTitle());
 	}
