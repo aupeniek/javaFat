@@ -51,6 +51,7 @@ public class LoginTest extends TestWrapper {
 
 	@Test
 	public void loginAndConfirm() throws Exception {
+		//test
 		SelenideElement but = $("#shieldButtonOverlay");
 		but.click();
 		Thread.sleep(70000);
