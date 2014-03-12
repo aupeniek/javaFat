@@ -19,13 +19,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import pageobjects.Common;
-import pageobjects.CreateInstanceCarousel;
-import pageobjects.InstanceList;
 import util.TestWrapper;
 
 public class SmokeTests extends TestWrapper {
-	private InstanceList instanceList;
-	private CreateInstanceCarousel createInstanceCarousel;
+
 
 	@BeforeClass
 	public static void openDashboard() {
@@ -66,9 +63,7 @@ public class SmokeTests extends TestWrapper {
 		$(byText("Instances")).shouldBe(visible);
 		$(".loading-large").waitUntil(disappear, BASE_TIMEOUT);
 		$(".loading-medium-after-h1").waitUntil(disappear, BASE_TIMEOUT);
-		instanceList = page(InstanceList.class);
-		String in = instanceList.getFirtstInstanceName();
-		instanceList.toggleInstanceControl(in);
+
 	}
 
 	@Test
@@ -79,10 +74,6 @@ public class SmokeTests extends TestWrapper {
 		Common.errorNotPresent();
 		$(".loading-large").waitUntil(disappear, BASE_TIMEOUT);
 		$(".loading-medium-after-h1").waitUntil(disappear, BASE_TIMEOUT);
-		instanceList = page(InstanceList.class);
-		String in = instanceList.getFirtstInstanceName();
-		$(byText(in)).click();
-		Common.checkHeadingText(in);
 		$(byText("Start Analytics")).click();
 		Common.checkBreadcrumb(
 				"Dashboard / Instance details / Cloud analytics",
@@ -134,23 +125,6 @@ public class SmokeTests extends TestWrapper {
 		String packageSize = "Standard 0.25";
 		$(byText("Create Instance")).click();
 		Common.checkHeadingText("Create Instance");
-		createInstanceCarousel = page(CreateInstanceCarousel.class);
-		createInstanceCarousel.waitUntilPageIsActive(0);
-		createInstanceCarousel.selectDataCenter(dataCenter);
-		createInstanceCarousel.selectOsFilter("smartos");
-		createInstanceCarousel.setOsVersion(os, version);
-		createInstanceCarousel.selectOsImage(os);
-		createInstanceCarousel.waitUntilPageIsActive(1);
-		createInstanceCarousel.selectInstanceType(packageType);
-		createInstanceCarousel.selectPackage(packageSize);
-		createInstanceCarousel
-				.checkSelectedImageDescription("A 32-bit SmartOS");
-		createInstanceCarousel.checkPackageInfo(dataCenter, "256 MB", "16 GB",
-				"0.125 and bursting");
-		createInstanceCarousel.checkPaymentInfo("0.008", "5.84");
-		createInstanceCarousel.setInstanceNameValue(instanceName);
-		$(byText("Create instance")).click();
-		createInstanceCarousel.cancelInstanceCreation();
 	}
 
 	@Test
