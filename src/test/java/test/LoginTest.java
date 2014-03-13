@@ -6,15 +6,19 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 import java.awt.Robot;
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.internal.seleniumemulation.WaitForCondition;
 
@@ -51,6 +55,10 @@ public class LoginTest extends TestWrapper {
 
 	@Test
 	public void loginAndConfirm() throws Exception {
+		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		// Now you can do whatever you need to do with it, for example copy somewhere
+		FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshot.png"));
+		
 		//test
 		SelenideElement but = $("#shieldButtonOverlay");
 		but.click();
