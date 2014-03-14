@@ -37,7 +37,7 @@ public class FlashButtons {
 //		robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
 //		robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 //		robot.delay(2000);
-		System.out.println("confirmLogin()");
+//		System.out.println("confirmLogin()");
 	}
 	
 	/**

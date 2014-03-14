@@ -7,6 +7,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 import java.awt.Robot;
 import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
@@ -55,17 +56,28 @@ public class LoginTest extends TestWrapper {
 
 	@Test
 	public void loginAndConfirm() throws Exception {
-		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		// Now you can do whatever you need to do with it, for example copy somewhere
-		FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshot.png"));
+		// screenshot after login
+		makeScreenshot("c:\\tmp\\screenshot1.png");
 		
-		//test
 		SelenideElement but = $("#shieldButtonOverlay");
 		but.click();
+		
+		// screenshot - opening flash
+		makeScreenshot("c:\\tmp\\screenshot2.png");
+		
 		Thread.sleep(70000);
+		
+		// screenshot - check if we're loaded
+		makeScreenshot("c:\\tmp\\screenshot3.png");
+		
 		buttons.confirmLogin();
 		
 		System.out.println("Title: " + driver.getTitle());
+	}
+	
+	public static void makeScreenshot(String path) throws IOException {
+		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(scrFile, new File(path));
 	}
 	
 	public static void sleep(Long time) {
