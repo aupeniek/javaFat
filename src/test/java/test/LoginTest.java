@@ -75,9 +75,14 @@ public class LoginTest extends TestWrapper {
 		System.out.println("Title: " + driver.getTitle());
 	}
 	
-	public static void makeScreenshot(String path) throws IOException {
+	public static void makeScreenshot(String path) {
 		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File(path));
+		try {
+			FileUtils.copyFile(scrFile, new File(path));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static void sleep(Long time) {
