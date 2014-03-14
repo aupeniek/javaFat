@@ -7,7 +7,6 @@ import static com.codeborne.selenide.Selenide.open;
 
 import java.awt.Robot;
 import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
@@ -56,33 +55,26 @@ public class LoginTest extends TestWrapper {
 
 	@Test
 	public void loginAndConfirm() throws Exception {
+		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		// screenshot after login
-		makeScreenshot("c:\\tmp\\screenshot1.png");
+		FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshot1.png"));
 		
 		SelenideElement but = $("#shieldButtonOverlay");
 		but.click();
 		
+		File scrFile2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		// screenshot - opening flash
-		makeScreenshot("c:\\tmp\\screenshot2.png");
+		FileUtils.copyFile(scrFile2, new File("c:\\tmp\\screenshot2.png"));
 		
 		Thread.sleep(70000);
 		
+		File scrFile3 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		// screenshot - check if we're loaded
-		makeScreenshot("c:\\tmp\\screenshot3.png");
+		FileUtils.copyFile(scrFile3, new File("c:\\tmp\\screenshot3.png"));
 		
 		buttons.confirmLogin();
 		
 		System.out.println("Title: " + driver.getTitle());
-	}
-	
-	public static void makeScreenshot(String path) {
-		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		try {
-			FileUtils.copyFile(scrFile, new File(path));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	public static void sleep(Long time) {
