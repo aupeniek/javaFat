@@ -12,12 +12,13 @@ import com.codeborne.selenide.WebDriverProvider;
 @SuppressWarnings("deprecation")
 public class LocalFirefox implements WebDriverProvider {
 	@Override
-	public WebDriver createDriver() {
+	public WebDriver createDriver(DesiredCapabilities capabillities) {
 		FirefoxProfile profile = new FirefoxProfile(
 				new File(
-						"/Users/taavipauskar/Library/Application Support/Firefox/Profiles/1iz6dms6.default"));
+						"/home/aupeniek/.mozilla/firefox/jpafxfwh.default/"));
 		new DesiredCapabilities();
-		DesiredCapabilities capabillities = DesiredCapabilities.firefox();
+		
+		capabillities = DesiredCapabilities.firefox();
 		capabillities.setCapability(FirefoxDriver.PROFILE, profile);
 		return new FirefoxDriver(profile);
 	}

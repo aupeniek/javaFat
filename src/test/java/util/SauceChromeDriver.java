@@ -13,10 +13,11 @@ import com.codeborne.selenide.WebDriverProvider;
 public class SauceChromeDriver implements WebDriverProvider {
 
 	SauceAuthentication auth = new SauceAuthentication();
-
-	public WebDriver createDriver() {
+	
+	@Override
+	public WebDriver createDriver(DesiredCapabilities capabillities) {
 		try {
-			DesiredCapabilities capabillities = DesiredCapabilities.chrome();
+			capabillities = DesiredCapabilities.chrome();
 			capabillities.setCapability("platform", "Windows 7");
 			capabillities.setCapability("name", "Sauce Chrome Tests");
 			return new RemoteWebDriver(new URL("http://" + auth.getUsername()

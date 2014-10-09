@@ -20,7 +20,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.internal.seleniumemulation.WaitForCondition;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;

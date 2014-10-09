@@ -14,10 +14,9 @@ public class SauceIeDriver implements WebDriverProvider {
 
 	SauceAuthentication auth = new SauceAuthentication();
 
-	public WebDriver createDriver() {
+	public WebDriver createDriver(DesiredCapabilities capabillities) {
 		try {
-			DesiredCapabilities capabillities = DesiredCapabilities
-					.internetExplorer();
+			capabillities = DesiredCapabilities.internetExplorer();
 			capabillities.setCapability("platform", "Windows 7");
 			capabillities.setCapability("name", "Sauce IE Tests");
 			return new RemoteWebDriver(new URL("http://" + auth.getUsername()

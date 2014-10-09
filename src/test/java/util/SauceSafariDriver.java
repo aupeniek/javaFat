@@ -14,9 +14,9 @@ public class SauceSafariDriver implements WebDriverProvider {
 
 	SauceAuthentication auth = new SauceAuthentication();
 
-	public WebDriver createDriver() {
+	public WebDriver createDriver(DesiredCapabilities capabillities) {
 		try {
-			DesiredCapabilities capabillities = DesiredCapabilities.safari();
+			 capabillities = DesiredCapabilities.safari();
 			capabillities.setCapability("platform", "OS X 10.6");
 			capabillities.setCapability("name", "Sauce Safari Tests");
 			return new RemoteWebDriver(new URL("http://" + auth.getUsername()
