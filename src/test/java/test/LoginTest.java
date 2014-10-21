@@ -37,7 +37,7 @@ public class LoginTest extends TestWrapper {
 		baseUrl = BASE_URL;
 		open(baseUrl);
 		driver.manage().window().setPosition(new Point(0, 0));
-		driver.manage().window().setSize(new Dimension(1200, 850));
+		driver.manage().window().setSize(new Dimension(1036, 780));
 		Common.login();
 	}
 
@@ -72,6 +72,10 @@ public class LoginTest extends TestWrapper {
 		FileUtils.copyFile(scrFile3, new File("c:\\tmp\\screenshot3.png"));
 		
 		buttons.confirmLogin();
+		
+		File scrFile4 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		// screenshot - check if we're loaded
+		FileUtils.copyFile(scrFile4, new File("c:\\tmp\\screenshot3.png"));
 		
 		System.out.println("Title: " + driver.getTitle());
 	}

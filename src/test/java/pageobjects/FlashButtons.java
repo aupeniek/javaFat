@@ -18,26 +18,26 @@ public class FlashButtons {
 	}
 	
 	public static void confirmLogin() throws Exception {
-		Actions actor = new Actions(driv);
-		actor.moveByOffset(600, 612);
-		actor.wait(500);
-		actor.click();
+//		Actions actor = new Actions(driv);
+//		actor.moveByOffset(600, 612);
+//		actor.wait(500);
+//		actor.click();
+//		
+//		actor.wait(2000);
+//		actor.moveByOffset(600,  590);
+//		actor.wait(500);
+//		actor.click();
 		
-		actor.wait(2000);
-		actor.moveByOffset(600,  590);
-		actor.wait(500);
-		actor.click();
-		
-//		Robot robot = new Robot();
-//		robot.mouseMove(600, 612);
-//		robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-//		robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-//		robot.delay(2000);
-//		robot.mouseMove(600, 590);
-//		robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-//		robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-//		robot.delay(2000);
-//		System.out.println("confirmLogin()");
+		Robot robot = new Robot();
+		robot.mouseMove(600, 612);
+		robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+		robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+		robot.delay(2000);
+		robot.mouseMove(600, 590);
+		robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+		robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+		robot.delay(2000);
+		System.out.println("confirmLogin()");
 	}
 	
 	/**
