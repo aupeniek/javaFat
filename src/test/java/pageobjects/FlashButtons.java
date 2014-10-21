@@ -58,4 +58,13 @@ public class FlashButtons {
 	public void SelectResources() {
 		
 	}
+	
+	public void StarmenuUp() {
+		
+	}
+	
+	public void StarmenuDown() {
+		
+	}
+	
 }

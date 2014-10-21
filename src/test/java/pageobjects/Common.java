@@ -24,7 +24,7 @@ public class Common {
 			.getProperty("globaltimeout", "15000"));
 
 	public static void login() {
-		
+		System.setProperty("java.awt.headless", "false");
 		$("#loginUsernameBar").setValue(System.getProperty("loginusr"));
 		SelenideElement pw = $("#loginFormBar").$$("fieldset").get(1).$("input");
 		pw.setValue(System.getProperty("loginpw"));
